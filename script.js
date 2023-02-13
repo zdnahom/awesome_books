@@ -1,4 +1,4 @@
-const books=[
+let books=[
     {
         id:1,
         title:'Wonder',
@@ -16,7 +16,6 @@ const books=[
     },
 ]
 const booksList=document.querySelector('.books')
-console.log(booksList)
 
 function generateBooks(data){
     data.forEach((item)=>{
@@ -24,10 +23,14 @@ function generateBooks(data){
         book.innerHTML=`
         <h3>${item.title}</h3>
         <p>${item.author}</p>
-        <button type="button">Remove</button>
+        <button type="button" onclick="removeBooks(${item.id})">Remove</button>
         <hr/>
         `
         booksList.appendChild(book)
     })
 }
+function removeBooks(id){
+    books=books.filter((book)=>book.id!==id)
+}
+
 generateBooks(books)
