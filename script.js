@@ -16,17 +16,18 @@ const books=[
     },
 ]
 const booksList=document.querySelector('.books')
+console.log(booksList)
 
 function generateBooks(data){
     data.forEach((item)=>{
-        let book=`<div>
+        let book=document.createElement('div')
+        book.innerHTML=`
         <h3>${item.title}</h3>
-        <h3>${item.autor}</h3>
+        <p>${item.author}</p>
         <button type="button">Remove</button>
         <hr/>
-        </div>
         `
         booksList.appendChild(book)
     })
 }
-generateBooks()
+generateBooks(books)
