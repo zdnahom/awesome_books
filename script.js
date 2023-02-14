@@ -1,23 +1,13 @@
-let books=[
-    {
-        id:1,
-        title:'Wonder',
-        author:'James'
-    },
-    {
-        id:2,
-        title:'The origin',
-        author:'Helen'
-    },
-    {
-        id:3,
-        title:'Naruto',
-        author:'Uzumaki'
-    },
-]
+
+let books=JSON.parse(localStorage.getItem('books')) || []
+
 const booksList=document.querySelector('.books')
+const form=document.querySelector('form')
+const {title,author}=form.elements
+
 
 function generateBooks(data){
+    
     data.forEach((item)=>{
         let book=document.createElement('div')
         book.innerHTML=`
@@ -29,8 +19,15 @@ function generateBooks(data){
         booksList.appendChild(book)
     })
 }
-function removeBooks(id){
-    books=books.filter((book)=>book.id!==id)
+function addBooks(title,author){
+    let idRandom=Math.floor(Math.random() * 100000)
+    let bookInfo={id:idRandom,title:title.value,author:author.value}
+    books.push(bookInfo)
+    localStorage.setItem('books',JSON.stringify(books))
 }
-
+function removeBooks(id){
+}
+form.addEventListener('submit',function(event){
+    addBooks(title,author)
+})
 generateBooks(books)
