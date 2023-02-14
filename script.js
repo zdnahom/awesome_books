@@ -26,6 +26,9 @@ function addBooks(title,author){
     localStorage.setItem('books',JSON.stringify(books))
 }
 function removeBooks(id){
+    books=books.filter(book=>book.id!==id)
+    localStorage.setItem('books',JSON.stringify(books))
+    window.location.reload(); 
 }
 form.addEventListener('submit',function(event){
     addBooks(title,author)
