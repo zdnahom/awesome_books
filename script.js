@@ -1,17 +1,16 @@
 /* eslint no-unused-vars: 0 */
-let books = JSON.parse(localStorage.getItem('books')) || [];
-console.log(books)
-const booksList = document.querySelector('.books');
-const form = document.querySelector('form');
+let books = JSON.parse(localStorage.getItem("books")) || [];
+const booksList = document.querySelector(".books");
+const form = document.querySelector("form");
 const { title, author } = form.elements;
 
 function generateBooks(data) {
   data.forEach((item) => {
-    const book = document.createElement('div');
+    const book = document.createElement("div");
     book.innerHTML = `
         <h3>${item.title}</h3>
         <p>${item.author}</p>
-        <button type="button" onclick="Books.removeBooks(${item.id})">Remove</button>
+        <button type="button" onclick="lib.removeBooks(${item.id})">Remove</button>
         <hr/>
         `;
     booksList.appendChild(book);
@@ -19,45 +18,32 @@ function generateBooks(data) {
 }
 
 class Book {
-  constructor (id, title, author){
-  this.id = id;
-  this.title = title;
-  this.author = author;
+  constructor(id, title, author) {
+    this.id = id;
+    this.title = title;
+    this.author = author;
   }
 }
 
 class Library {
-  lists = books;
+  books = books;
   addBooks(title, author) {
-    console.log('it is clicked');
-    // const ourBooks = JSON.parse(localStorage.getItem('books'));
     const idRandom = Math.floor(Math.random() * 100000);
-    // const bookInfo = { id: idRandom, title: title.value, author: author.value };
-    const bookInfo = new Book(idRandom, title.value, author.value)
-      this.lists.push(bookInfo);
-    localStorage.setItem('books', JSON.stringify(this.lists));
+    const bookInfo = new Book(idRandom, title.value, author.value);
+    this.books.push(bookInfo);
+    console.log(this.books)
+    localStorage.setItem("books", JSON.stringify(this.books));
   }
   removeBooks(id) {
-    this.lists = this.lists.filter((book) => book.id !== id);
-    localStorage.setItem('books', JSON.stringify(this.lists));
+    this.books = this.books.filter((book) => book.id !== id);
+    localStorage.setItem("books", JSON.stringify(this.books));
     window.location.reload();
   }
-  }
-// function addBooks(title, author) {
-//   const idRandom = Math.floor(Math.random() * 100000);
-//   // const bookInfo = { id: idRandom, title: title.value, author: author.value };
-//   const bookInfo = new Book(idRandom, title.value, author.value)
-//     books.push(bookInfo);
-//   localStorage.setItem('books', JSON.stringify(books));
-// }
+}
 
-form.addEventListener('submit', (event) => {
-  // event.preventDefault();
-  Books.addBooks(title, author);
+form.addEventListener("submit", (event) => {
+  lib.addBooks(title, author);
 });
-const Books = new Library();
 
-
+const lib = new Library();
 generateBooks(books);
-// localStorage.clear();
-
