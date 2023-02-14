@@ -9,15 +9,18 @@
 </head>
 <body>
     <main>
-        <h1>Awesome books</h1>
-        <div class="books">
+        <div class="container">
+            <h1>All awesome books</h1>
+            <div class="books"></div>
+            <hr/>
+            <h2>Add a new book</h2>
+            <form>
+                <input name="title" type="text" placeholder="Title" required>
+                <input name="author" type="text" placeholder="Author" required>
+                <button type="submit">Add</button>
+            </form>
         </div>
-        <form style="display: flex;flex-direction: column;width: 40%;gap: 10px;">
-            <input name="title" type="text" placeholder="Title">
-            <input name="author" type="text" placeholder="Author">
-            <button type="submit">Add</button>
-        </form>
-    </main>
+        </main>
     <script  src="./script.js"></script>
 </body>
 </html>
