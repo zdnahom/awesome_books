@@ -2,7 +2,18 @@
 /* eslint max-classes-per-file: ["error", 2] */
 
 const books = JSON.parse(localStorage.getItem('books')) || [];
+const date = new Date();
+
+const dateP = document.querySelector('.date');
 const booksList = document.querySelector('.books');
+const listLink = document.querySelector('#book-list');
+const newBookLink = document.querySelector('#new-book');
+const contactLink = document.querySelector('#contact');
+
+const bookListSection = document.querySelector('.booklist');
+const addBookSection = document.querySelector('.addbook-section');
+const contactSection = document.querySelector('.contact-details');
+
 const form = document.querySelector('form');
 const { title, author } = form.elements;
 
@@ -48,7 +59,35 @@ const lib = new Library();
 form.addEventListener('submit', (event) => {
   lib.addBooks(title, author);
 });
+listLink.addEventListener('click', function () {
+  this.classList.add('active');
+  newBookLink.classList.remove('active');
+  contactLink.classList.remove('active');
 
+  addBookSection.classList.add('hide');
+  bookListSection.classList.remove('hide');
+  contactSection.classList.add('hide');
+});
+newBookLink.addEventListener('click', function () {
+  this.classList.add('active');
+  listLink.classList.remove('active');
+  contactLink.classList.remove('active');
+
+  addBookSection.classList.remove('hide');
+  bookListSection.classList.add('hide');
+  contactSection.classList.add('hide');
+});
+contactLink.addEventListener('click', function () {
+  this.classList.add('active');
+  listLink.classList.remove('active');
+  newBookLink.classList.remove('active');
+
+  addBookSection.classList.add('hide');
+  bookListSection.classList.add('hide');
+  contactSection.classList.remove('hide');
+});
+
+dateP.innerHTML = `${date}`;
 generateBooks(books);
 if (books.length === 0) {
   booksList.style.display = 'none';
