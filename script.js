@@ -59,8 +59,7 @@ const lib = new Library();
 form.addEventListener('submit', (event) => {
   lib.addBooks(title, author);
 });
-
-listLink.addEventListener('click', () => {
+listLink.addEventListener('click', function () {
   this.classList.add('active');
   newBookLink.classList.remove('active');
   contactLink.classList.remove('active');
@@ -69,7 +68,7 @@ listLink.addEventListener('click', () => {
   bookListSection.classList.remove('hide');
   contactSection.classList.add('hide');
 });
-newBookLink.addEventListener('click', () => {
+newBookLink.addEventListener('click', function () {
   this.classList.add('active');
   listLink.classList.remove('active');
   contactLink.classList.remove('active');
@@ -78,7 +77,7 @@ newBookLink.addEventListener('click', () => {
   bookListSection.classList.add('hide');
   contactSection.classList.add('hide');
 });
-contactLink.addEventListener('click', () => {
+contactLink.addEventListener('click', function () {
   this.classList.add('active');
   listLink.classList.remove('active');
   newBookLink.classList.remove('active');
@@ -87,6 +86,7 @@ contactLink.addEventListener('click', () => {
   bookListSection.classList.add('hide');
   contactSection.classList.remove('hide');
 });
+
 dateP.innerHTML = `${date}`;
 generateBooks(books);
 if (books.length === 0) {
