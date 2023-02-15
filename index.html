@@ -8,18 +8,41 @@
     <title>Awesome books home page</title>
 </head>
 <body>
+    <header>
+    <nav class="navigator">
+    <h3>Awesome books</h3>
+    <ul>
+        <li>List</li>   
+        <li>Add new</li>
+        <li>Contact</li>
+    </ul>
+    </nav>
+</header>
     <main>
-        <div class="container">
+        <section class="container bookList">
             <h1>All awesome books</h1>
             <div class="books"></div>
             <hr/>
+        </section>
+        <section class="container search">
             <h2>Add a new book</h2>
             <form>
                 <input name="title" type="text" placeholder="Title" required>
                 <input name="author" type="text" placeholder="Author" required>
                 <button type="submit">Add</button>
             </form>
-        </div>
+        </section>
+        <section class="container contactDetails">
+            <h2>Contact infromation</h2>
+            <p>Do you have any questions or you just want to say "Hello"?<br>
+                You can reach out to us!
+            </p>
+            <ul>
+                <li>Our email address is Kamrankhan.ahmad2@yahoo.com</li>
+                <li>Our Phone number: +93745009131</li>
+                <li>Our address: Qalai-zaman-khan 4th street, Kabul, Afghanistan</li>
+            </ul>
+        </section>
         </main>
     <script  src="./script.js"></script>
 </body>
